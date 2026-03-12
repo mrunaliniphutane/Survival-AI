@@ -1,0 +1,5 @@
+{
+  "name": "Startup Failure Predictor",
+  "description": "An AI-powered survival analysis tool that predicts startup failure probability based on funding, team, and market data.",
+  "requestFramePermissions": []
+}
