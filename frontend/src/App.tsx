@@ -5,7 +5,7 @@ import { cn, formatCurrency } from './lib/utils';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 // --- API Client ---
-const API_BASE = (import.meta as unknown as { env: Record<string, string> }).env.VITE_API_URL ?? "/api";
+const API_BASE = "/api";
 
 async function predictStartup(data: Record<string, unknown>) {
   const res = await fetch(`${API_BASE}/predict`, {
