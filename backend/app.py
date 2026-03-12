@@ -223,7 +223,17 @@ class StartupEngine:
 # --- Flask App ---
 def create_app():
     app = Flask(__name__)
-    CORS(app, origins="*")
+    CORS(
+        app,
+        origins=[
+            "https://survival-ai.vercel.app",
+            "http://localhost:5173",
+            "http://localhost:4173",
+        ],
+        methods=["GET", "POST", "OPTIONS"],
+        allow_headers=["Content-Type", "Authorization"],
+        supports_credentials=False,
+    )
 
     engine = StartupEngine()
 
