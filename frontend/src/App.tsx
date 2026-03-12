@@ -5,7 +5,7 @@ import { cn, formatCurrency } from './lib/utils';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 // --- API Client ---
-const API_BASE = import.meta.env.VITE_API_URL ?? "/api";
+const API_BASE = (import.meta as unknown as { env: Record<string, string> }).env.VITE_API_URL ?? "/api";
 
 async function predictStartup(data: Record<string, unknown>) {
   const res = await fetch(`${API_BASE}/predict`, {
@@ -472,7 +472,7 @@ const ResultsDashboard = ({ results, onReset }: { results: PredictionResults, on
               <Tooltip 
                 contentStyle={{ backgroundColor: '#12121A', border: '1px solid #1E1E2E', borderRadius: '8px' }}
                 itemStyle={{ color: '#00FFB2' }}
-                formatter={(v: number) => [`${(v * 100).toFixed(1)}%`, 'Survival Probability']}
+                formatter={(v) => [`${((Number(v) || 0) * 100).toFixed(1)}%`, 'Survival Probability']}
                 labelFormatter={(v) => `Month ${v}`}
               />
               <Area 
